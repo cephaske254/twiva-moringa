@@ -1,10 +1,10 @@
-$info-gradient: linear-gradient(-30deg, var(--bs-info), #3674a9, #3045b1);
+$info-gradient: linear-gradient(30deg, var(--bs-info), #3674a9, #3045b1);
 
 .sidebar {
   width: 300px;
   border-right: 2px solid var(--bs-light);
   height: 100%;
-  padding: 12px 6px;
+  padding: 0 12px 6px;
 
   li.nav-item {
     list-style: none;
@@ -19,9 +19,9 @@ $info-gradient: linear-gradient(-30deg, var(--bs-info), #3674a9, #3045b1);
       text-decoration: none;
       color: var(--light);
       align-items: center;
-      padding: 12px 20px;
+      padding: 12px 30px;
 
-      border-radius: 15px;
+      border-radius: 10px;
 
       .icon {
         padding: 8px;
@@ -41,6 +41,7 @@ $info-gradient: linear-gradient(-30deg, var(--bs-info), #3674a9, #3045b1);
     .nav-link {
       background-color: var(--bs-dark);
       color: var(--bs-white);
+      box-shadow: -4px 2px 12px var(--bs-light);
     }
     .icon {
       background-image: $info-gradient;

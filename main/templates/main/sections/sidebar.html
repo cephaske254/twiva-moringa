@@ -1,0 +1,28 @@
+<nav class="nav flex-column">
+  <!--  -->
+
+  {% for link in nav_items %}
+  <li class="nav-item">
+    <a href="{{link.path}}" class="nav-link d-flex flex-row">
+      <div class="d-flex icon">{{link.icon | safe}}</div>
+      {{link.title}}
+    </a>
+  </li>
+  <!--  -->
+  {% endfor %}
+</nav>
+
+<script>
+  window.onload = function () {
+    const pathname = window.location.pathname;
+
+    document.querySelectorAll(".nav .nav-item").forEach((element) => {
+      const href = element.querySelector("a").getAttribute("href");
+      if ((href || "/") === pathname) {
+        element.classList.add("active");
+      } else {
+        element.classList.remove("active");
+      }
+    });
+  };
+</script>
