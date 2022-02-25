@@ -14,13 +14,13 @@
     />
 
     <link
-      href="{% static 'css/common.css' %}"
+      href="{% sass_src 'scss/sidebar.scss' %}"
       rel="stylesheet"
       type="text/css"
     />
 
     <link
-      href="{% static 'css/sidebar.css' %}"
+      href="{% static 'css/common.css' %}"
       rel="stylesheet"
       type="text/css"
     />
@@ -31,11 +31,15 @@
     <div class="d-flex flex-row h-100 overflow-y-scroll">
       <div class="px-3 sidebar">
         <nav class="nav flex-column">
-          {% for item in nav_items %}
-
+          <!--  -->
+          {% for link in nav_items %}
           <li class="nav-item">
-            <a href="#" class="nav-link"> {{item.title}} </a>
+            <a href="{{link.path}}" class="nav-link d-flex flex-row">
+              <div class="d-flex icon">{{link.icon | safe}}</div>
+              {{link.title}}
+            </a>
           </li>
+          <!--  -->
           {% endfor %}
         </nav>
       </div>
@@ -43,3 +47,18 @@
     </div>
   </body>
 </html>
+
+<script>
+  window.onload = function () {
+    const pathname = window.location.pathname;
+
+    document.querySelectorAll(".nav .nav-item").forEach((element) => {
+      const href = element.querySelector("a").getAttribute("href");
+      if ((href || "/") === pathname) {
+        element.classList.add("active");
+      } else {
+        element.classList.remove("active");
+      }
+    });
+  };
+</script>

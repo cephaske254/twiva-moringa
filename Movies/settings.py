@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "sass_processor",
+    "svg",
     #
     "main.apps.MainConfig",
     "utils.apps.UtilsConfig",
