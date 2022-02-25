@@ -1,0 +1,45 @@
+{% load sass_tags %} {% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="{% sass_src 'scss/custom.scss' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <link
+      href="{% static 'css/common.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <link
+      href="{% static 'css/sidebar.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <title>{% block title %} {{ title }} {% endblock %}</title>
+  </head>
+  <body>
+    <div class="d-flex flex-row h-100 overflow-y-scroll">
+      <div class="px-3 sidebar">
+        <nav class="nav flex-column">
+          {% for item in nav_items %}
+
+          <li class="nav-item">
+            <a href="#" class="nav-link"> {{item.title}} </a>
+          </li>
+          {% endfor %}
+        </nav>
+      </div>
+      <main>{% block body %} {% endblock %}</main>
+    </div>
+  </body>
+</html>

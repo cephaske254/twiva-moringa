@@ -1,0 +1,34 @@
+// Custom.scss
+// Option B: Include parts of Bootstrap
+
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "./bootstrap/functions";
+
+// 2. Include any default variable overrides here
+
+// Default variable overrides
+$body-bg: #24252d;
+$info: #3362ac;
+$secondary: #373945;
+$light: #35353d;
+$dark: #1a1a21;
+$body-color: #8b8b95;
+
+// 3. Include remainder of required Bootstrap stylesheets
+@import "./bootstrap/variables";
+@import "./bootstrap/mixins";
+@import "./bootstrap/root";
+
+// 4. Include any optional Bootstrap CSS as needed
+@import "./bootstrap/utilities";
+@import "./bootstrap/reboot";
+@import "./bootstrap/type";
+@import "./bootstrap/images";
+@import "./bootstrap/containers";
+@import "./bootstrap/grid";
+@import "./bootstrap/helpers";
+
+// 5. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
+@import "./bootstrap/utilities/api";
+
+// 6. Add additional custom code here
