@@ -1,0 +1,13 @@
+.categories-cont .chip {
+  padding: 12px 22px;
+  border-radius: 9px;
+  margin-right: 3px;
+  color: inherit;
+  text-decoration: none; }
+
+.categories-cont .active {
+  background-color: var(--bs-dark);
+  color: var(--bs-white);
+  font-weight: 500; }
+
+/*# sourceMappingURL=categories.css.map */

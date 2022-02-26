@@ -1,1 +1,9 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block body %} {% block css %} {% load sass_tags %}
+<link rel="stylesheet" href="{% sass_src 'scss/categories.scss' %}" />
+{% endblock %}
+<div class="w-100 mt-4 categories-cont d-flex flex-row">
+  <a class="chip bg-dark active nav-link">All</a>
+  <a class="chip">Category here</a>
+</div>
+
+{% endblock %}
