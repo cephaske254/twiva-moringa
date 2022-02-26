@@ -1,3 +1,5 @@
+@import "config";
+
 $info-gradient: linear-gradient(30deg, var(--bs-info), #3674a9, #3045b1);
 
 .sidebar {
@@ -5,6 +7,8 @@ $info-gradient: linear-gradient(30deg, var(--bs-info), #3674a9, #3045b1);
   border-right: 2px solid var(--bs-light);
   height: 100%;
   padding: 0 12px 6px;
+  z-index: 100;
+  background-color: var(--bs-body-bg);
 
   li.nav-item {
     list-style: none;
@@ -47,4 +51,17 @@ $info-gradient: linear-gradient(30deg, var(--bs-info), #3674a9, #3045b1);
       background-image: $info-gradient;
     }
   }
+}
+
+@include media-breakpoint-down(md) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: all cubic-bezier(1, 0, 0, 1);
+  }
+}
+
+main {
+  transition: 2s cubic-bezier(1, 0, 0, 1);
 }
