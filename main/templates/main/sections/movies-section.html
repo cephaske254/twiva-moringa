@@ -1,0 +1,13 @@
+<div class="row pt-4">
+  {% for movie in movies.results %}
+  <div class="col-md-3 col-sm-4 col-lg-2 pr-2 mb-4">
+    <div class="card bg-light h-100">
+      <div class="card-body">
+        <div class="image-cont card-img-bottom card-img-top">
+          <img src="{{movie.poster_path}}" alt="" class="card-img-top card-img-bottom" />
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>

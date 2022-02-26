@@ -29,21 +29,23 @@
 
     <title>{% block title %} {{ title }} {% endblock %}</title>
   </head>
-  <body>
-    <div class="d-flex flex-row h-100 overflow-y-scroll">
-      <div class="px-3 sidebar">
-        <!-- top logo -->
-        {% include 'main/sections/top-logo.html' %}
-        <!--  -->
-        {% include 'main/sections/sidebar.html' %}
-      </div>
-      <main class="h-100 w-100 container">
-        {% include 'main/sections/app-bar.html' %}
-        <!-- body -->
-        {% block body %} {% endblock %}
+  <body style="display: flex">
+    <div class="flex-fill w-100 d-flex flex-row overflow-hidden">
+      {% include "main/sections/sidebar.html" %}
+
+      <main class="d-block flex-fill px-sm-2 px-lg-4">
+        <div class="control-sections">{% include "main/sections/app-bar.html" %} {% include "main/sections/categories.html" %}</div>
+        <div class="flex-fill overflow-y-scroll h-100 scroll" style="padding-bottom: {{top_bar_height}};">{% block body%} {% endblock %}</div>
       </main>
     </div>
 
     {% block scripts%} {% endblock %}
+    <script>
+      window.addEventListener("load", () => {
+        const xScrolls = Array.from(document.querySelectorAll(".scroll, .scroll-x")).forEach((el) => {
+          const scrollElement = new SimpleBar(el).getContentElement();
+        });
+      });
+    </script>
   </body>
 </html>

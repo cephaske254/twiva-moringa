@@ -1,20 +1,14 @@
  {% block css %} {% load sass_tags %}
 <link rel="stylesheet" href="{% sass_src 'scss/categories.scss' %}" />
 {% endblock %}
-<div class="w-100 mt-4 categories-cont row flex-row">
+<div class="categories-cont">
+
+<div class="pt-4   flex-row scroll-x pb-2">
   {% for cat in categories%}
-  <a href="{% url 'home'%}{% if cat.id %}?category={{cat.id}}{%endif%}" class="chip nav-link {% if activeCat|stringformat:"s" == cat.id|stringformat:"s" %} active {% endif %}">
-    <span class="d-block"> {{cat.name}} </span></a
+  <a href="{% url 'home'%}{% if cat.id %}?category={{cat.id}}{%endif%}" class="chip nav-link my-auto {% if activeCat|stringformat:"s" == cat.id|stringformat:"s" %} active {% endif %}">
+        <div class="m-0"> {{cat.name}} </div></a
   >
   {% endfor%}
 </div>
+</div>
 
-
-<script>
-  window.addEventListener('load', function(){
-    const chip=document.querySelector('.categories-cont .chip.active')
-    if(chip) {
-      chip.onclick = function(e){e.preventDefault()}
-    }
-  })
-</script>

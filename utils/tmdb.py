@@ -1,6 +1,18 @@
-from urllib.parse import parse_qsl, urlencode, urljoin
+from dataclasses import replace
+from urllib.parse import urlencode, urljoin
 
 import requests
+
+base_url = "https://api.themoviedb.org/3/"
+org_url = "https://themoviedb.org/"
+image_base_url = urljoin(org_url, "t/p/")
+
+
+def build_image_url(url: str, w: str = "w500") -> str:
+    _url = url.replace("/", "", 1) if url.startswith("/") else url
+    url_string = urljoin(image_base_url, "%s/%s" % (w, url))
+
+    return url_string
 
 
 class _Session(requests.Session):
@@ -13,7 +25,7 @@ class _Session(requests.Session):
         self.headers.setdefault("Authorization", "Bearer %s" % api_key)
 
         __url = urljoin(
-            "https://api.themoviedb.org/3/",
+            base_url,
             url,
         )
 

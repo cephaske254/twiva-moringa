@@ -8,12 +8,46 @@
       width: 100%;
       fill: var(--bs-white); }
 
-@media (min-width: 768px) {
-  .app-bar form {
-    max-width: 300px; } }
+main {
+  padding-top: 140px; }
 
-@media (min-width: 768px) and (min-width: 992px) {
-  .app-bar form {
-    max-width: 420px; } }
+.control-sections {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  left: 0;
+  background-color: var(--bs-body-bg);
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; }
+
+@media (max-width: 575.98px) {
+  .sidebar {
+    max-width: 300px;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0; }
+  .control-sections {
+    padding-left: 300px; } }
+
+@media (min-width: 576px) {
+  .sidebar {
+    max-width: 340px;
+    width: 100%;
+    position: relative; }
+  .control-sections {
+    padding-left: 340px; } }
+
+@media (min-width: 768px) {
+  .sidebar {
+    max-width: 340px;
+    width: 100%;
+    position: relative; }
+  .control-sections {
+    padding-left: 340px; } }
 
 /*# sourceMappingURL=app-bar.css.map */

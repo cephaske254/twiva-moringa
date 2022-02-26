@@ -24,6 +24,8 @@ $font-size-base: 0.8rem;
 
 $headings-font-family: "Lato", sans-serif;
 
+$card-border-radius: 20px;
+
 // 3. Include remainder of required Bootstrap stylesheets
 @import "./bootstrap/variables";
 
@@ -39,6 +41,8 @@ $headings-font-family: "Lato", sans-serif;
 @import "./bootstrap/grid";
 @import "./bootstrap/helpers";
 @import "./bootstrap/forms";
+@import "./bootstrap/nav";
+@import "./bootstrap/card";
 
 // 5. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
 @import "./bootstrap/utilities/api";

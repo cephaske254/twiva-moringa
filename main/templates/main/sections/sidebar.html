@@ -2,30 +2,32 @@
 <link href="{% sass_src 'scss/sidebar.scss' %}" rel="stylesheet" type="text/css" />
 {% endblock %}
 
-<nav class="nav flex-column">
-  <!--  -->
-  {% for link in nav_items %}
-  <li class="nav-item">
-    <a href="{{link.path}}" class="nav-link d-flex flex-row">
-      <div class="d-flex icon">{{link.icon | safe}}</div>
-      {{link.title}}
-    </a>
-  </li>
-  <!--  -->
-  {% endfor %}
+<div class="sidebar">
+  <nav class="nav flex-column">
+    <!--  -->
+    {% for link in nav_items %}
+    <li class="nav-item">
+      <a href="{{link.path}}" class="nav-link d-flex flex-row">
+        <div class="d-flex icon">{{link.icon | safe}}</div>
+        {{link.title}}
+      </a>
+    </li>
+    <!--  -->
+    {% endfor %}
 
-  <script>
-    window.addEventListener("load", function () {
-      const pathname = window.location.pathname;
+    <script>
+      window.addEventListener("load", function () {
+        const pathname = window.location.pathname;
 
-      document.querySelectorAll(".nav .nav-item").forEach((element) => {
-        const href = element.querySelector("a").getAttribute("href");
-        if ((href || "/") === pathname) {
-          element.classList.add("active");
-        } else {
-          element.classList.remove("active");
-        }
+        document.querySelectorAll(".nav .nav-item").forEach((element) => {
+          const href = element.querySelector("a").getAttribute("href");
+          if ((href || "/") === pathname) {
+            element.classList.add("active");
+          } else {
+            element.classList.remove("active");
+          }
+        });
       });
-    });
-  </script>
-</nav>
+    </script>
+  </nav>
+</div>

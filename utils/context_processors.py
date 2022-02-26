@@ -21,4 +21,4 @@ def load_nav_items(request):
         },
     ]
 
-    return {"nav_items": nav_items, "top_bar_height": "70px"}
+    return {"nav_items": nav_items, "top_bar_height": "auto"}

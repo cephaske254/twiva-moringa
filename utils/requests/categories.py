@@ -10,9 +10,3 @@ def get_latest() -> List[CategoryMini]:
     genres = [{"name": "All", id: None}, *req.json().get("genres", [])]
 
     return [(CategoryMini(category)) for category in genres]
-
-
-def getMovieByCategory(categoryId: str):
-    url = "discover/movie"
-    req = tmdb.get(url, params={"with_genres": categoryId} if categoryId else {})
-    print(req.json())
