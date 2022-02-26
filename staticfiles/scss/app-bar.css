@@ -1,0 +1,19 @@
+.app-bar form {
+  width: 100%; }
+  .app-bar form label.icon {
+    width: 20px;
+    height: 20px; }
+    .app-bar form label.icon svg {
+      height: 100%;
+      width: 100%;
+      fill: var(--bs-white); }
+
+@media (min-width: 768px) {
+  .app-bar form {
+    max-width: 300px; } }
+
+@media (min-width: 768px) and (min-width: 992px) {
+  .app-bar form {
+    max-width: 420px; } }
+
+/*# sourceMappingURL=app-bar.css.map */

@@ -1,6 +1,13 @@
+{% load sass_tags %} {% block css %}
+<link
+  href="{% sass_src 'scss/sidebar.scss' %}"
+  rel="stylesheet"
+  type="text/css"
+/>
+{% endblock %}
+
 <nav class="nav flex-column">
   <!--  -->
-
   {% for link in nav_items %}
   <li class="nav-item">
     <a href="{{link.path}}" class="nav-link d-flex flex-row">

@@ -1,1 +1,12 @@
-<div class="d-flex w-100 app-bar" style="height: {{top_bar_height}};">ssss</div>
+{% load sass_tags%} {%load svg %} {% block css%}
+<link rel="stylesheet" href="{% sass_src 'scss/app-bar.scss' %}" />
+
+{%endblock %}
+<div class="d-flex w-100 app-bar d-flex align-items-center container" style="height: {{top_bar_height}};">
+  <form action="">
+    <div class="form-group d-flex bg-light rounded h-100 align-items-center ps-2">
+      <label for="search-input" class="icon d-flex h-100">{% svg 'search' %}</label>
+      <input id="search-input" type="text" class="form-control search-input w-100" placeholder="search movie, category..." />
+    </div>
+  </form>
+</div>

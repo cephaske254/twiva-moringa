@@ -1,0 +1,34 @@
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+
+.app-bar {
+  form {
+    width: 100%;
+    label.icon {
+      width: 20px;
+      height: 20px;
+
+      svg {
+        height: 100%;
+        width: 100%;
+        fill: var(--bs-white);
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .app-bar {
+    form {
+      max-width: 300px;
+    }
+  }
+  @include media-breakpoint-up(lg) {
+    .app-bar {
+      form {
+        max-width: 420px;
+      }
+    }
+  }
+}
