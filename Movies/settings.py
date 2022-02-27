@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     #
     "main.apps.MainConfig",
     "utils.apps.UtilsConfig",
+    "movies.apps.MoviesConfig",
 ]
 
 MIDDLEWARE = [

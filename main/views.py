@@ -11,7 +11,6 @@ class Home(View):
         categories = get_latest()
         activeCat = request.GET.get("category", categories[0].id)
         movies = getMovieByCategory(activeCat)
-        print(movies)
 
         context = {
             "categories": categories,

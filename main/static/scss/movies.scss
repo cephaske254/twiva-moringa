@@ -1,7 +1,27 @@
+@import "config";
+
 .image-cont {
   max-height: 250px;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  box-shadow: -4px 2px 12px var(--bs-dark);
+}
+
+@include media-breakpoint-down(sm) {
+  .image-cont {
+    padding: 12px;
+  }
+}
+
+.heart-button {
+  padding: 3px 6px;
+  margin-top: auto;
+  border-radius: 50%;
+  svg {
+    width: 12px;
+    height: 12px;
+  }
 }
