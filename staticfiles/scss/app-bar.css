@@ -11,6 +11,10 @@
 main {
   padding-top: 140px; }
 
+.control-sections,
+.top-logo {
+  height: 140px; }
+
 .control-sections {
   position: fixed;
   top: 0;
@@ -18,10 +22,10 @@ main {
   z-index: 1;
   left: 0;
   background-color: var(--bs-body-bg);
-  height: 140px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around; }
+  justify-content: space-around;
+  box-shadow: 6px 12px 14px #1a1a2142; }
 
 @media (max-width: 575.98px) {
   .sidebar {

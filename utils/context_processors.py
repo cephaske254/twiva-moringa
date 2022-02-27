@@ -6,7 +6,7 @@ def load_nav_items(request):
     nav_items: list = [
         {
             "title": "Home",
-            "icon": svg.svg("home-outline"),
+            "icon": svg.svg("grid"),
             "path": reverse("home"),
         },
         {

@@ -1,0 +1,8 @@
+.image-cont {
+  max-height: 250px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+/*# sourceMappingURL=movies.css.map */

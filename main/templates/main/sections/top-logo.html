@@ -1,3 +1,7 @@
-<div class="d-flex w-100 app-bar d-flex align-items-end" style="height: {{top_bar_height}};">
-  <div class="navbar-brand d-flex align-items-center px-2">TWIVA</div>
+{% load static %}
+
+<div class="d-flex w-100 top-logo d-flex align-items-end">
+  <a class="navbar-brand" href="{% url 'home' %}">
+    <img src="{% static 'images/logo.png' %}" alt="" style="height: 100px" />
+  </a>
 </div>

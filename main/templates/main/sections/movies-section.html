@@ -1,10 +1,18 @@
+{% load sass_tags%}
+<link href="{% sass_src 'scss/movies.scss' %}" rel="stylesheet" type="text/css" />
 <div class="row pt-4">
   {% for movie in movies.results %}
-  <div class="col-md-3 col-sm-4 col-lg-2 pr-2 mb-4">
+  <div class="col-md-3 col-sm-4 col-lg-2 pr-2 mb-4 pb-2">
     <div class="card bg-light h-100">
       <div class="card-body">
         <div class="image-cont card-img-bottom card-img-top">
           <img src="{{movie.poster_path}}" alt="" class="card-img-top card-img-bottom" />
+        </div>
+      </div>
+      <div class="card-footer border-0 bg-transparent">
+        <div class="card-text">
+          <p class="small">{{movie.release_date}}</p>
+          <p class="card-subtitle text-bold text-white">{{movie.title}}</p>
         </div>
       </div>
     </div>
