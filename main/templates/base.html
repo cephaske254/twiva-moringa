@@ -1,51 +1,20 @@
-{% load sass_tags %} {% load static %}
+{% extends 'base-empty.html' %} {% block content %}
+<div class="flex-fill w-100 d-flex flex-row overflow-hidden">
+  {% include "main/sections/sidebar.html" %}
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;700&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" />
+  <main class="d-block flex-fill px-sm-2 px-lg-4">
+    {% block navbar%}
+    <div class="control-sections">{% include "main/sections/app-bar.html" %} {% include "main/sections/categories.html" %}</div>
+    {%endblock%}
+    <div class="flex-fill overflow-y-scroll h-100 scroll" style="padding-bottom: {{top_bar_height}};">{% block body%} {% endblock %}</div>
+  </main>
 
-    <style>
-      body {
-        font-family: "Poppins", sans-serif;
-      }
-      a {
-        text-decoration: none;
-      }
-    </style>
-    <link href="{% sass_src 'scss/custom.scss' %}" rel="stylesheet" type="text/css" />
-
-    <link href="{% static 'css/common.css' %}" rel="stylesheet" type="text/css" />
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css" />
-    <script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
-
-    {% block css %} {%endblock%}
-
-    <title>{% block title %} {{ title }} {% endblock %}</title>
-  </head>
-  <body style="display: flex">
-    <div class="flex-fill w-100 d-flex flex-row overflow-hidden">
-      {% include "main/sections/sidebar.html" %}
-
-      <main class="d-block flex-fill px-sm-2 px-lg-4">
-        <div class="control-sections">{% include "main/sections/app-bar.html" %} {% include "main/sections/categories.html" %}</div>
-        <div class="flex-fill overflow-y-scroll h-100 scroll" style="padding-bottom: {{top_bar_height}};">{% block body%} {% endblock %}</div>
-      </main>
-    </div>
-
-    {% block scripts%} {% endblock %}
-    <script>
-      window.addEventListener("load", () => {
-        const xScrolls = Array.from(document.querySelectorAll(".scroll, .scroll-x")).forEach((el) => {
-          const scrollElement = new SimpleBar(el).getContentElement();
-        });
+  <script>
+    window.addEventListener("load", () => {
+      const xScrolls = Array.from(document.querySelectorAll(".scroll, .scroll-x")).forEach((el) => {
+        const scrollElement = new SimpleBar(el).getContentElement();
       });
-    </script>
-  </body>
-</html>
+    });
+  </script>
+</div>
+{% endblock content %}

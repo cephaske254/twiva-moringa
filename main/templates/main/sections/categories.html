@@ -1,14 +1,21 @@
- {% block css %} {% load sass_tags %}
+{% load sass_tags %}
+
+{% if categories %}
+{% block css %} 
 <link rel="stylesheet" href="{% sass_src 'scss/categories.scss' %}" />
 {% endblock %}
 <div class="categories-cont">
+  <div class="pt-4   flex-row scroll-x pb-2">
+    {% for cat in categories%}
+    <a href="{% url 'home'%}{% if cat.id %}?category={{cat.id}}{%endif%}" class="chip nav-link my-auto {% if activeCat|stringformat:"s" == cat.id|stringformat:"s" %} active {% endif %}">
+          <div class="m-0"> {{cat.name}} </div></a
+    >
+    {% endfor%}
+  </div>
+</div>
+{% endif %}
 
-<div class="pt-4   flex-row scroll-x pb-2">
-  {% for cat in categories%}
-  <a href="{% url 'home'%}{% if cat.id %}?category={{cat.id}}{%endif%}" class="chip nav-link my-auto {% if activeCat|stringformat:"s" == cat.id|stringformat:"s" %} active {% endif %}">
-        <div class="m-0"> {{cat.name}} </div></a
-  >
-  {% endfor%}
-</div>
-</div>
+
+{% if not categories %}
+<div class="h-100"></div>{% endif %}
 

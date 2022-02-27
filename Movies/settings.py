@@ -40,9 +40,10 @@ INSTALLED_APPS = [
     "sass_processor",
     "svg",
     #
-    "main.apps.MainConfig",
     "utils.apps.UtilsConfig",
+    "main.apps.MainConfig",
     "movies.apps.MoviesConfig",
+    "accounts.apps.AccountsConfig",
 ]
 
 MIDDLEWARE = [

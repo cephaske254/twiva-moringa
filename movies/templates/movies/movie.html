@@ -1,0 +1,64 @@
+{%extends 'base.html' %} {% load static %} {% block body%}
+
+<div class="container-fluid h-100">
+  <div class="row h-100 pt-2">
+    <div id="carousel" class="carousel slide h-100 col-lg-8 col-md-7 col-12" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        {% for image in movie.posters %}
+        <button type="button" data-bs-target="#carousel" data-bs-slide-to="{{forloop.counter0}}" class="active" aria-current="true" aria-label="Slide 1"></button>
+        {% endfor %}
+      </div>
+      <div class="carousel-inner h-100 w-100 d-flex rounded">
+        {% for image in movie.backdrops %}
+        <div class="carousel-item h-100 w-100 {% if forloop.counter == 1 %}active{% endif %}" style="background-image:url('{{image.src}}');">
+          <div class="h-100 w-100 d-flex align-items-center justify-content-center content">
+            <img src="{{image.src}}" class="d-block w-100" loading="lazy" />
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    {% comment %}  {% endcomment %}
+    <div class="col-lg-4 col-md-5 col px-2">
+        <h4 class="text-white text-uppercase ">
+            {{movie.detail.title}}
+        </h4>
+        <h5>{{movie.detail.tagline}}</h5>
+        <hr>
+        <p>
+            {{movie.detail.overview}}
+        </p>
+
+        <div class="pt-4">
+          <p class="text-white">Comments</p>
+          <textarea class="form-control" id="" placeholder="Add a comment..."></textarea>
+        </div>
+    </div>
+  </div>
+</div>
+{% block css%}
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+{% endblock %}
+
+<style>
+  .simplebar-content {
+    height: 100%;
+  }
+  .carousel-item{
+    background-size:cover;
+    background-repeat:no-repeat;background-position:center;
+  }
+  .carousel-item .content{
+    backdrop-filter: blur(13px);
+  }
+</style>
+
+{% endblock %}

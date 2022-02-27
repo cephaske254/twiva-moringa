@@ -3,23 +3,25 @@
 <div class="row pt-4">
   {% for movie in movies.results %}
   <div class="col-md-3 col-sm-4 col-lg-2 pr-2 mb-4 pb-2">
-    <div class="card bg-light h-100">
-      <div class="card-body">
-        <div class="image-cont card-img-bottom card-img-top">
-          <img src="{{movie.poster_path}}" alt="" class="card-img-top card-img-bottom" />
+    <a href="{% url 'movie' tmdb_id=movie.id%}" class="text-decoration-none">
+      <div class="card bg-light h-100">
+        <div class="card-body">
+          <div class="image-cont card-img-bottom card-img-top">
+            <img src="{{movie.poster_path}}" alt="" loading="lazy" class="card-img-top card-img-bottom" />
+          </div>
         </div>
-      </div>
-      <div class="card-footer border-0 bg-transparent">
-        <div class="card-text">
-          <p class="small mb-0">{{movie.release_date}}</p>
-          <div class="d-flex">
-            <p class="card-subtitle text-bold text-white align-items-center">{{movie.title}}</p>
-            <div class="flex-fill"></div>
-            <button class="btn btn-dark btn-icon heart-button">{% svg 'heart' %}</button>
+        <div class="card-footer border-0 bg-transparent">
+          <div class="card-text">
+            <p class="small mb-0">{{movie.release_date}}</p>
+            <div class="d-flex">
+              <p class="card-subtitle text-bold text-white align-items-center">{{movie.title}}</p>
+              <div class="flex-fill"></div>
+              <button class="btn btn-dark btn-icon heart-button">{% svg 'heart' %}</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </a>
   </div>
   {% endfor %}
 </div>

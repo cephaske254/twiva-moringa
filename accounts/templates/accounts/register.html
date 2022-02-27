@@ -1,0 +1,47 @@
+{% extends 'base-empty.html' %} {% block content %}
+<div class="container h-100">
+  <div class="row h-100 justify-content-center align-items-center">
+    <div class="col-md-5 col-sm-8 col-11">
+      <div class="card bg-light pt-3">
+        <div class="card-header bg-transparent">
+          <h2 class="card-title text-bold text-white">Register</h2>
+          <p class="card-title text-bold text-muted">Create an account</p>
+        </div>
+        <div class="card-body">
+          <form class="form" method="POST">
+            {{form.non_field_errors}} {% for field in form %}
+            <div class="form-group mb-4">
+              <label for="{{ field.id_for_label }}">{{field.label}}</label>
+              <input
+                name="{{field.name}}"
+                id="{{field.name}}"
+                {%if field.value %}
+                value="{{field.value}}"
+                required
+                {%endif%}
+                type="{% if field.name == 'password1' or field.name == 'password2' %}password{% endif %}"
+                class="form-control form-control-lg py-3"
+                placeholder="{{field.helperText}}"
+              />
+              {% for error in field.errors %}
+              <p class="my-0 small text-danger">{{error|safe}}</p>
+              {% endfor %}
+            </div>
+            {% endfor %} 
+            <div class="d-flex pb-3 w-100">
+              {% csrf_token %}
+              <button class="btn btn-lg btn-primary py-3 w-100">REGISTER</button>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer d-flex justify-content-space-between">
+          <p class="w-100 text">Already have an account?</p>
+          <a href="{% url 'login' %}" class="link text-decoration-none text-body" style="letter: spacing 1.2em">
+            <b>Login</b>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

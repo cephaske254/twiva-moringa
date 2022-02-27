@@ -1,4 +1,3 @@
-from dataclasses import replace
 from urllib.parse import urlencode, urljoin
 
 import requests

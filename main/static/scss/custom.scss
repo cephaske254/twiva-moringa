@@ -14,13 +14,13 @@ $light: #35353d;
 $dark: #1a1a21;
 $body-color: #8b8b95;
 
-$input-border-color: $light !default;
+$input-border-color: $body-color !default;
 $input-padding-y: 12px;
 $input-bg: $light;
 
 $font-family-sans-serif: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
   "Segoe UI Symbol", "Noto Color Emoji";
-$font-size-base: 0.8rem;
+// $font-size-base: 0.8rem;
 
 $headings-font-family: "Lato", sans-serif;
 
@@ -43,6 +43,7 @@ $card-border-radius: 20px;
 @import "./bootstrap/forms";
 @import "./bootstrap/nav";
 @import "./bootstrap/card";
+@import "./bootstrap/carousel";
 @import "./bootstrap/buttons";
 
 // 5. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
