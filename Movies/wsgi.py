@@ -16,5 +16,3 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Movies.settings")
 
 
 application = WhiteNoise(get_wsgi_application(), root="staticfiles")
-#
-#

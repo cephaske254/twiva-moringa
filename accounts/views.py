@@ -16,12 +16,14 @@ def logoutUser(request):
 
 class Login(View):
     def post(self, request: HttpRequest):
+        login_url = request.GET.get("next", reverse("home"))
+
         form = AuthenticationForm(data=request.POST)
 
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return HttpResponseRedirect(reverse("home"))
+            return HttpResponseRedirect(login_url)
 
         return render(request, "accounts/login.html", context={"form": form})
 

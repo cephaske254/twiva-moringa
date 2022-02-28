@@ -28,6 +28,7 @@ SECRET_KEY = config("SECRET_KEY")
 DEBUG = config("DEBUG", False, cast=bool)
 
 ALLOWED_HOSTS = ["*"]
+LOGIN_URL = "/login"
 
 
 # Application definition
