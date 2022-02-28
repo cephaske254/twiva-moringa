@@ -9,11 +9,11 @@
       fill: var(--bs-white); }
 
 main {
-  padding-top: 140px; }
+  padding-top: 160px; }
 
 .control-sections,
 .top-logo {
-  height: 140px; }
+  min-height: 140px; }
 
 .control-sections {
   position: fixed;

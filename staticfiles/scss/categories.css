@@ -1,5 +1,4 @@
 .categories-cont {
-  overflow-x: scroll;
   flex-wrap: nowrap; }
   .categories-cont .chip {
     padding: 12px 22px;

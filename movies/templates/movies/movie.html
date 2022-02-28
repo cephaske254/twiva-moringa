@@ -26,21 +26,25 @@
         <span class="visually-hidden">Next</span>
       </button>
     </div>
-    {% comment %}  {% endcomment %}
-    <div class="col-lg-4 col-md-5 col px-2">
-        <h4 class="text-white text-uppercase ">
-            {{movie.detail.title}}
-        </h4>
-        <h5>{{movie.detail.tagline}}</h5>
-        <hr>
-        <p>
-            {{movie.detail.overview}}
-        </p>
+    {% comment %} {% endcomment %}
+    <div class="col-lg-4 col-md-5 col px-2 h-100 d-flex flex-column">
+      <div class="d-flex">
+      <h4 class="text-white text-uppercase w-100">{{movie.detail.title}}</h4>
+      <p  class='d-flex'>
+        <b class="text-bold text-white">
+          {{movie.detail.vote_average}}
+        </b> /10
+      </p>
 
-        <div class="pt-4">
-          <p class="text-white">Comments</p>
-          <textarea class="form-control" id="" placeholder="Add a comment..."></textarea>
-        </div>
+      </div>
+      <h5>{{movie.detail.tagline}}</h5>
+      <hr />
+      <p>{{movie.detail.overview}}</p>
+
+      <div class="pt-4 flex-fill">
+        <p class="text-white">Comments</p>
+        {% include 'movies/comments.html' %}
+      </div>
     </div>
   </div>
 </div>
@@ -52,11 +56,12 @@
   .simplebar-content {
     height: 100%;
   }
-  .carousel-item{
-    background-size:cover;
-    background-repeat:no-repeat;background-position:center;
+  .carousel-item {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
   }
-  .carousel-item .content{
+  .carousel-item .content {
     backdrop-filter: blur(13px);
   }
 </style>

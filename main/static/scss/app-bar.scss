@@ -17,11 +17,11 @@
 }
 
 main {
-  padding-top: $control-sections-height;
+  padding-top: $control-sections-height + 20;
 }
 .control-sections,
 .top-logo {
-  height: $control-sections-height;
+  min-height: $control-sections-height;
 }
 
 .control-sections {

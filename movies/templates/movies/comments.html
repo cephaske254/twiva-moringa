@@ -1,0 +1,81 @@
+{% load svg %}
+
+<div class="d-flex align-items-end">
+  <textarea class="form-control" name="add-comment" placeholder="Add a comment..."></textarea>
+  <button onclick="addComment(this)" class="btn btn-sm btn-info ms-2" type="button">Add</button>
+</div>
+
+{% if comments%}
+<hr />
+{% endif %}
+<ul class="mt-2 flex-1 flex-fill nav flex-column">
+  {% for comment in comments %}
+  <li id="comment-{{comment.id}}">
+    <div class="card bg-light rounded-1 mb-2">
+      <div class="card-body d-flex align-items-end">
+        <div class="card-text w-100">
+          <h5 class="mb-0 text-white">
+            <b>{{comment.user|title}}</b>
+          </h5>
+          {{comment.comment}}
+        </div>
+
+        {% if comment.user == request.user.username%}
+        <div class="d-flex">
+          <button class="btn btn-sm btn-sm text-white">{% svg 'edit' %}</button>
+          <button class="btn btn-sm btn-sm text-danger"
+          onclick="deleteComment({{comment.id}})"
+          >{% svg 'trash-2' %}</button>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+
+<style>
+  .btn svg {
+    width: 20px;
+    height: 20px;
+  }
+</style>
+
+<script>
+  const url="{% url 'comments' tmdb_id=movie.detail.id %}"
+  const token="{{csrf_token}}"
+
+  function addComment(e) {
+    const comment = document.querySelector("textarea[name=add-comment]");
+
+    const formData = new FormData();
+    formData.append("comment", comment.value);
+    formData.append("csrfmiddlewaretoken",token );
+
+    fetch(url, {
+      method: "POST",
+      body: formData,
+    }).then(function (a) {
+      if (a.status < 400) {
+        comment.value = "";
+        window.location.reload();
+      }
+    });
+  }
+
+  function deleteComment(id) {
+    const element = document.getElementById(`comment-${id}`)
+    element.remove()
+
+    const formData=new FormData()
+    formData.append('comment',id)
+    formData.append("csrfmiddlewaretoken",token );
+
+    fetch(`${url}?comment=${id}`, {
+      method:"DELETE",
+      headers:{
+        "X-CSRFToken":token
+      },
+    })
+  }
+</script>

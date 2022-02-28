@@ -1,6 +1,3 @@
-from django.contrib.auth.decorators import login_required
-from django.core import serializers
-from django.db.models import QuerySet
 from django.http.request import HttpRequest
 from django.http.response import JsonResponse
 from django.shortcuts import render
@@ -12,40 +9,53 @@ from utils.requests.movies import getMovie
 
 
 class Comments(View):
-    @login_required
-    def post(self, request: HttpRequest):
-        movie = self.get_or_create_object(tmdb_id)
-        tmdb_id = request.data.get("tmdb_id")
+    def post(self, request: HttpRequest, tmdb_id):
+        movie = Movie.get_or_create_object(tmdb_id)
+        _comment = request.POST.get("comment")
 
-        comment = Comment(
-            movie=movie, user=self.request.user, comment=request.data.get("comment")
-        )
+        comment = Comment(movie=movie, user=request.user, comment=_comment)
         comment.save()
 
-        comments = Comment.objects.filter(tmdb_id=tmdb_id)
+        return JsonResponse(
+            {
+                "comment": comment.comment,
+                "id": comment.id,
+                "user": comment.user.username,
+            }
+        )
 
-        return serializers.serialize("json", comments)
-
-    def get(self, request: HttpRequest, tmdb_id, *args, **kwargs):
-
-        return JsonResponse([])
-
-    def get_or_create_object(self, tmdb_id) -> QuerySet[Movie]:
-        try:
-            return Movie.objects.get(tmdb_id=tmdb_id)
-        except:
-            return Movie.objects.create(tmdb_id=tmdb_id)
+    def delete(self, request: HttpRequest, tmdb_id):
+        comment = Comment.objects.filter(
+            pk=request.GET.get("comment"),
+            user=request.user,
+            movie=Movie.get_or_create_object(tmdb_id),
+        )
+        comment.delete()
+        return JsonResponse({"success": True})
 
 
 class MovieDetail(View):
     def get(self, request: HttpRequest, tmdb_id: str):
+        movie = Movie.get_or_create_object(tmdb_id)
+        _comments = Comment.objects.filter(movie=movie) or []
         movie = getMovie(tmdb_id)
+        comments = [
+            (
+                {
+                    "comment": comment.comment,
+                    "user": comment.user.username,
+                    "id": comment.pk,
+                }
+            )
+            for comment in _comments
+        ]
 
         return render(
             request,
             "movies/movie.html",
             context={
                 "movie": movie,
+                "comments": comments,
                 "title": "%s | %s" % (movie.detail.title, movie.detail.tagline),
             },
         )
