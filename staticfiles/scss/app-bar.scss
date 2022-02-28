@@ -1,0 +1,80 @@
+@import "./config.scss";
+
+.app-bar {
+  form {
+    width: 100%;
+    label.icon {
+      width: 20px;
+      height: 20px;
+
+      svg {
+        height: 100%;
+        width: 100%;
+        fill: var(--bs-white);
+      }
+    }
+  }
+}
+
+main {
+  padding-top: $control-sections-height + 20;
+}
+.control-sections,
+.top-logo {
+  min-height: $control-sections-height;
+}
+
+.control-sections {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  left: 0;
+  background-color: var(--bs-body-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  box-shadow: 6px 12px 14px #1a1a2142;
+}
+
+@include media-breakpoint-down(sm) {
+  $width: 300px;
+  .sidebar {
+    max-width: $width;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+  }
+  .control-sections {
+    padding-left: $width;
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  $width: 340px;
+
+  .sidebar {
+    max-width: $width;
+    width: 100%;
+    position: relative;
+  }
+  .control-sections {
+    padding-left: $width;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  $width: 340px;
+
+  .sidebar {
+    max-width: $width;
+    width: 100%;
+    position: relative;
+  }
+  .control-sections {
+    padding-left: $width;
+  }
+}

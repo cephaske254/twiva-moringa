@@ -1,0 +1,72 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+html {
+  overflow-x: hidden;
+}
+body {
+  overflow-y: scroll;
+}
+* {
+  box-sizing: border-box;
+}
+
+.simplebar-scrollbar::before {
+  background-color: transparent;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scroll-x::-webkit-scrollbar,
+.scroll::-webkit-scrollbar,
+.scroll-y::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-x .simplebar-content {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scroll-x,
+.scroll,
+.scroll-y {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.simplebar-placeholder {
+  height: auto;
+  width: auto;
+  pointer-events: none;
+}
+.scroll-x .simplebar-content {
+  display: flex;
+
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.overflow-y-scroll {
+  overflow-y: scroll;
+}
+
+
+.simplebar-track.simplebar-horizontal .simplebar-scrollbar:before ,
+  .simplebar-track.simplebar-vertical .simplebar-scrollbar:before {
+  background-color: #ffffff;
+  background-color: 'orange"
+}
+
+
+
+.errorlist.nonfield {
+  color:var(--bs-danger);
+  list-style: none;
+  padding: 0;
+  font-size: 12px;
+}
