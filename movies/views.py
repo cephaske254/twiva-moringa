@@ -31,7 +31,7 @@ class Comments(View):
             movie=Movie.get_or_create_object(tmdb_id),
         )
         comment.delete()
-        return JsonResponse({"success": True})
+        return JsonResponse({"success": comment is not None})
 
 
 class MovieDetail(View):

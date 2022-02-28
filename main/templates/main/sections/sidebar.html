@@ -1,34 +1,54 @@
-{% load sass_tags %} {% block css %}
+{% load sass_tags %}
+{% load svg %}
+ {% block css %}
 <link href="{% sass_src 'scss/sidebar.scss' %}" rel="stylesheet" type="text/css" />
 {% endblock %}
 
 <div class="sidebar">
   {% include "main/sections/top-logo.html" %}
-  <nav class="nav flex-column">
+  <div class="d-flex flex-column justify-content-space-between h-100">
+  <ul class="nav flex-column">
     <!--  -->
     {% for link in nav_items %}
     <li class="nav-item">
-      <a href="{{link.path}}" class="nav-link d-flex flex-row">
+      <a href={{link.path}} class="nav-link d-flex flex-row">
         <div class="d-flex icon">{{link.icon | safe}}</div>
         {{link.title}}
       </a>
     </li>
     <!--  -->
     {% endfor %}
+  </ul>
 
-    <script>
-      window.addEventListener("load", function () {
-        const pathname = window.location.pathname;
-
-        document.querySelectorAll(".nav .nav-item").forEach((element) => {
-          const href = element.querySelector("a").getAttribute("href");
-          if ((href || "/") === pathname) {
-            element.classList.add("active");
-          } else {
-            element.classList.remove("active");
-          }
-        });
-      });
-    </script>
-  </nav>
+  {% if request.user.is_authenticated%}
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a href="{% url 'logout' %}" class="nav-link d-flex flex-row text-danger">
+        <div class="d-flex icon">{% svg 'power' %}</div>
+        <b>
+          Logout
+        </b>
+      </a>
+    </li>
+  </ul>
+  {% endif %}
+  </div>
 </div>
+
+{% block scripts%}
+
+<script>
+  window.addEventListener("load", function () {
+    const pathname = window.location.pathname;
+
+    document.querySelectorAll(".sidebar .nav .nav-item").forEach((element) => {
+      const href = element.querySelector("a").getAttribute("href");
+      if ((href || "/") === pathname) {
+        element.classList.add("active");
+      } else {
+        element.classList.remove("active");
+      }
+    });
+  });
+</script>
+{% endblock %}

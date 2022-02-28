@@ -3,7 +3,7 @@
 <div class="row pt-4">
   {% for movie in movies.results %}
   <div class="col-md-3 col-sm-4 col-lg-2 pr-2 mb-4 pb-2">
-    <a href="{% url 'movie' tmdb_id=movie.id%}" class="text-decoration-none">
+    <a href="{% url 'movie' tmdb_id=movie.id%}" class="text-decoration-none text-body">
       <div class="card bg-light h-100">
         <div class="card-body">
           <div class="image-cont card-img-bottom card-img-top">

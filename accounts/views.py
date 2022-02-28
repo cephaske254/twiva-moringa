@@ -1,4 +1,4 @@
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.http import HttpRequest, HttpResponseRedirect
 from django.shortcuts import render
@@ -6,6 +6,12 @@ from django.urls import reverse
 from django.views import View
 
 # Create your views here.
+
+
+def logoutUser(request):
+    logout(request)
+
+    return HttpResponseRedirect(reverse("login"))
 
 
 class Login(View):
